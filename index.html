@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bear Witness — Digital Media & Investment</title>
+  <meta name="description" content="Bear Witness is a digital media and investment company. Community building, ecosystem development, social strategy, and brand promotion.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #f5f0e8;
+      background: #0a0a0a;
+      overflow-x: hidden;
+    }
+
+    /* Video Background */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.55;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(10, 10, 10, 0.3) 0%,
+        rgba(10, 10, 10, 0.1) 40%,
+        rgba(10, 10, 10, 0.4) 70%,
+        rgba(10, 10, 10, 0.95) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      max-width: 800px;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    .logo-container {
+      margin-bottom: 2rem;
+    }
+
+    .logo-container img {
+      width: 220px;
+      height: auto;
+      filter: drop-shadow(0 4px 30px rgba(0, 0, 0, 0.5));
+      mix-blend-mode: lighten;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.6;
+      animation: pulse 2s ease-in-out infinite;
+      cursor: pointer;
+      text-decoration: none;
+      color: #f5f0e8;
+    }
+
+    .scroll-indicator span {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 1.5px solid #f5f0e8;
+      border-bottom: 1.5px solid #f5f0e8;
+      transform: rotate(45deg);
+    }
+
+    /* About Section */
+    .about {
+      position: relative;
+      padding: 8rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .about-label {
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    .about p {
+      font-size: 1.125rem;
+      line-height: 1.9;
+      font-weight: 300;
+      color: rgba(245, 240, 232, 0.85);
+      margin-bottom: 2rem;
+    }
+
+    .about p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Accent line */
+    .accent-line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, #c9a96e, transparent);
+      margin-bottom: 3rem;
+    }
+
+    /* Pillars Section */
+    .pillars {
+      padding: 4rem 2rem 8rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .pillar {
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(201, 169, 110, 0.15);
+      border-radius: 2px;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .pillar:hover {
+      border-color: rgba(201, 169, 110, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .pillar h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #c9a96e;
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      font-weight: 300;
+      color: rgba(245, 240, 232, 0.6);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(245, 240, 232, 0.08);
+    }
+
+    .footer-logo img {
+      width: 80px;
+      height: auto;
+      mix-blend-mode: lighten;
+      opacity: 0.4;
+      margin-bottom: 1rem;
+    }
+
+    .footer p {
+      font-size: 0.75rem;
+      color: rgba(245, 240, 232, 0.3);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.2; }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .logo-container img {
+        width: 160px;
+      }
+
+      .about {
+        padding: 5rem 1.5rem;
+      }
+
+      .about p {
+        font-size: 1rem;
+      }
+
+      .pillars {
+        padding: 2rem 1.5rem 5rem;
+      }
+
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <video class="video-bg" autoplay muted loop playsinline>
+      <source src="assets/bg-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="logo-container">
+        <img src="assets/logo-gold.jpeg" alt="Bear Witness">
+      </div>
+    </div>
+
+    <a href="#about" class="scroll-indicator">
+      <span>Discover</span>
+      <div class="scroll-arrow"></div>
+    </a>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="fade-in">
+      <div class="about-label">Who We Are</div>
+      <div class="accent-line"></div>
+      <p>Bear Witness is a digital media and investment company. We specialise in community building, ecosystem development, social strategy, and brand promotion. But we don't operate like an agency. We embed inside the businesses we partner with and build from the core out. That means we know the product, the team, the vision, and the gaps before we ever post a thing. When we back something, we back it properly. We take stakes, not just retainers.</p>
+      <p>We are built on technology. AI, automation, data-led strategy, and tools most agencies won't touch for another five years. That's not a flex. It's just how we work. It means we move faster, see more, and build smarter than traditional outfits that are still running playbooks from 2019.</p>
+      <p>Our investment portfolio spans early-stage startups in health, wellness, and sustainability, alongside positions in crypto and precious metals. If it aligns with where the world is heading, we want to be in it early.</p>
+    </div>
+  </section>
+
+  <!-- Pillars -->
+  <section class="pillars">
+    <div class="pillars-grid">
+      <div class="pillar fade-in">
+        <h3>Community Building</h3>
+        <p>Embedded partnerships that build audiences from the inside out.</p>
+      </div>
+      <div class="pillar fade-in">
+        <h3>Technology-Led</h3>
+        <p>AI, automation, and data-driven strategy at the core of everything.</p>
+      </div>
+      <div class="pillar fade-in">
+        <h3>Strategic Investment</h3>
+        <p>Early-stage positions in health, wellness, sustainability, crypto, and precious metals.</p>
+      </div>
+      <div class="pillar fade-in">
+        <h3>Brand Promotion</h3>
+        <p>Social strategy and ecosystem development that actually moves the needle.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="assets/logo-gold.jpeg" alt="Bear Witness">
+    </div>
+    <p>&copy; 2026 Bear Witness. All rights reserved.</p>
+  </footer>
+
+  <!-- Scroll Animations -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
