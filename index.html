@@ -164,8 +164,10 @@
       display: inline-block;
       padding: 0.6rem 2rem;
       border: 1px solid rgba(255, 255, 255, 0.4);
+      background: none;
       color: #f5f0e8;
-      text-decoration: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
       font-size: 0.75rem;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -265,7 +267,7 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <a href="mailto:jesse@beargryllsventures.com" class="contact-btn">Contact</a>
+    <button class="contact-btn" onclick="navigator.clipboard.writeText('jesse@beargryllsventures.com').then(()=>{this.textContent='Email Copied!';setTimeout(()=>this.textContent='Contact',2000)})">Contact</button>
     <p>&copy; 2026 Bear Witness. All rights reserved.</p>
   </footer>
 
