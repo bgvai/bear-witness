@@ -288,7 +288,7 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <a href="mailto:jesse@beargryllsventures.com" class="contact-btn" onclick="navigator.clipboard.writeText('jesse@beargryllsventures.com');setTimeout(()=>{document.getElementById('toast').classList.add('show');setTimeout(()=>document.getElementById('toast').classList.remove('show'),3000)},5000)">Contact</a>
+    <a href="mailto:jesse@beargryllsventures.com" class="contact-btn" onclick="navigator.clipboard.writeText('jesse@beargryllsventures.com');document.getElementById('toast').classList.add('show');setTimeout(()=>document.getElementById('toast').classList.remove('show'),3000)">Contact</a>
     <div id="toast" class="toast">Email copied to clipboard</div>
     <p>&copy; 2026 Bear Witness. All rights reserved.</p>
   </footer>
